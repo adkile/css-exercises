@@ -3,8 +3,19 @@
   padding: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 .container {
   text-align: center;
+  display: grid;
+  grid-template: 2fr 1fr 13fr 1fr / 1fr 5fr;
+  grid-template-areas:
+    "header header"
+    "sidebar nav"
+    "sidebar article"
+    "footer footer";
 }
 
 .container div {
@@ -17,6 +28,41 @@
 
 .header {
   background-color: #393f4d;
+  grid-area: header;
+  display: grid;
+  grid-template: 1fr / 2fr 2fr 5fr;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.menu {
+  grid-area: 1 / 3;
+}
+
+.links-list {
+  display: grid;
+  grid-template: 1fr / repeat(auto-fit, 1fr);
+}
+
+.header-link-1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.header-link-2 {
+  grid-column: 2;
+}
+
+.header-link-3 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.header-link-4 {
+  grid-area: 1 / 4 / 2 / 5;
 }
 
 .menu ul,
@@ -25,7 +71,12 @@
 }
 
 .sidebar {
-  background-color: #C50208;
+  background-color: #c50208;
+  grid-area: sidebar;
+  display: grid;
+  grid-template: repeat(4, 1fr) / 1fr;
+  gap: 50px 0px;
+  justify-content: center;
 }
 
 .sidebar .photo {
@@ -34,18 +85,36 @@
   font-size: 12px;
   font-weight: normal;
   border-radius: 10px;
+  display: grid;
+  place-items: center;
 }
-
 
 .sidebar .side-content {
   background-color: white;
   color: black;
   font-size: 16px;
   font-weight: normal;
+  display: grid;
+  place-items: center;
 }
 
 .nav {
-  background-color: #C50208;
+  background-color: #c50208;
+  grid-area: nav;
+}
+
+.nav > ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 20px;
+}
+
+.nav > ul > li:nth-child(1) {
+  grid-area: 1 / 1 / 1 / 2;
+}
+
+.nav > ul > li:nth-child(2) {
+  grid-area: 1 / 2 / 1 / 3;
 }
 
 .nav ul li {
@@ -55,6 +124,11 @@
 
 .article {
   background-color: #bccbde;
+  grid-area: 3 / 2 / 4 / -1;
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px 15px;
 }
 
 .article p {
@@ -65,7 +139,7 @@
 }
 
 .article .card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: black;
   text-align: center;
 }
@@ -83,6 +157,7 @@
 
 .footer {
   background-color: #393f4d;
+  grid-area: footer;
 }
 
 .footer p {
